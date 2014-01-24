@@ -1,17 +1,19 @@
-$( document ).ready(function() {
-  
-	$('#url_sistema').val("http://192.168.1.22:8080/pcp/");
-	$('#token_sistema').val("jmhybikb");
+function onDeviceReady() {  
+  $( document ).ready(function() {
+    
+  	$('#url_sistema').val("http://192.168.1.22:8080/pcp/");
+  	$('#token_sistema').val("jmhybikb");
 
 
-	$('#salvar_configuracao').click(function() {    
-  	localStorage.setItem("url_sistema", $('#url_sistema').val());
-  	localStorage.setItem("token_sistema", $('#token_sistema').val());
+  	$('#salvar_configuracao').click(function() {    
+    	localStorage.setItem("url_sistema", $('#url_sistema').val());
+    	localStorage.setItem("token_sistema", $('#token_sistema').val());
 
-    login(false);
-	});
+      login(false);
+  	});
 
-});
+  });
+}
 
 function login(redireciona){
   validarPreenchimento(redireciona);

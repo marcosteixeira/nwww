@@ -46,14 +46,14 @@
         </form>
       </div>
     </div>
+
         <script type="text/javascript" src="phonegap.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/script.js"></script>
         <script type="text/javascript">            
-            app.initialize();
-
+            app.initialize();            
             $( document ).ready(function() {
               if( localStorage.getItem("usuario_sistema") != null && localStorage.getItem("usuario_sistema") != "" && localStorage.getItem("token_sistema") != null && localStorage.getItem("token_sistema") != ""){
                 sucessoLogin(localStorage.getItem("usuario_sistema"));
