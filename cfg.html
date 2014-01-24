@@ -4,7 +4,7 @@
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
         <title>Hello World</title>
     </head>
@@ -25,7 +25,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
           <ul class="nav navbar-nav">
-            <li class=""><a href="index.html">Home</a></li>
+            <li><a href="index.html">Home</a></li>
             <li class="active"><a href="#">Configurações</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
@@ -38,12 +38,8 @@
           </div>
           <div id="login-sistema">
             <div class="form-group">
-              <label for="usuario_sistema" id="label-login">Login</label>
-              <input type="text" class="form-control" id="usuario_sistema" placeholder="Login">
-            </div>
-            <div class="form-group" id="senha-sistema">
-              <label for="senha_sistema">Senha</label>
-              <input type="password" class="form-control" id="senha_sistema" placeholder="Senha">
+              <label for="token_sistema" id="label-login">Token</label>
+              <input type="text" class="form-control" id="token_sistema" placeholder="Token">
             </div>
           </div>
           <button type="button" class="btn btn-default" id="salvar_configuracao">Submit</button>
@@ -55,17 +51,15 @@
         <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/script.js"></script>
-        <script type="text/javascript" src="js/jquery.cookie.js"></script>
-        <script type="text/javascript">
-            
+        <script type="text/javascript">            
             app.initialize();
 
             $( document ).ready(function() {
-
-              if(localStorage.getItem("JSESSIONID") != null && localStorage.getItem("JSESSIONID") != ""){
-                ocultarSenha();
+              if( localStorage.getItem("usuario_sistema") != null && localStorage.getItem("usuario_sistema") != ""){
+                sucessoLogin(localStorage.getItem("usuario_sistema"));
               }
             });
+
         </script>
     </body>
 </html>

@@ -7117,4 +7117,8 @@ td.visible-print {
   }
 }
 
+.li-striped ul li { background: #efefef; }
+.li-striped ul li:nth-child(odd) { background: #fff; }
+
+
 body { padding-top: 70px; }

@@ -1,21 +1,3 @@
-/*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
- */
 var app = {
     // Application Constructor
     initialize: function() {
@@ -45,5 +27,36 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
+    }
+};
+
+var buscaDados = {
+    
+    
+    centrosTrabalho: function(){
+        
+        var url = localStorage.getItem("url_sistema") + "APIMobile.do?metodo=listarCentrosTrabalho&token="+ localStorage.getItem("token_sistema");
+        
+        $.ajax({ 
+          type: 'GET',
+          url: url,
+          dataType: 'jsonp', 
+          jsonp: false,
+          jsonpCallback: "resposta",
+          success: function(data) {
+            buscaDados.preencherCentros(data);         
+          }
+        });
+    },
+
+    preencherCentros: function(data){
+        $('#centros_trabalho').append("<ul id='ul-centros-trabalho' class='nav nav-pills nav-stacked text-center'></ul>");
+        $.each(data, function( index, value ) {
+            $('#ul-centros-trabalho').append("<li class='linha-centro-trabalho'>" +            
+              "<a href='#'>" +                    
+                value.nome +
+              "</a>" + 
+              "</li>"); 
+        });
     }
 };

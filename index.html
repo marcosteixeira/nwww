@@ -4,8 +4,9 @@
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+        <link rel="stylesheet" type="text/css" href="css/design.css" />
         <title>Hello World</title>
     </head>
     <body>
@@ -31,28 +32,19 @@
         </div><!-- /.navbar-collapse -->
       </nav>
     </div>
-    <div id="leitor-qr">
-      <script>
-
-        cordova.plugins.barcodeScanner.encode(BarcodeScanner.Encode.TEXT_TYPE, "http://www.nytimes.com", function(success) {
-            alert("encode success: " + success);
-          }, function(fail) {
-            alert("encoding failed: " + fail);
-          }
-        );
-      </script>
-
-
-
-    </div>
+    <div id="centros_trabalho">      
+    </div> 
         <script type="text/javascript" src="phonegap.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/script.js"></script>
-        <script type="text/javascript" src="js/barcodescanner.js"></script>
         <script type="text/javascript">
             app.initialize();
+            $( document ).ready(function() {
+              validarPreenchimento(true);
+              buscaDados.centrosTrabalho();
+            });
         </script>
     </body>
 </html>
