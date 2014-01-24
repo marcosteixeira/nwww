@@ -10,6 +10,16 @@ $( document ).ready(function() {
     login(false);
 	});
 
+  $('#sair').click(function(){
+    localStorage.removeItem("url_sistema");
+    localStorage.removeItem("token_sistema");
+    localStorage.removeItem("usuario_sistema");
+    $('#token_sistema').val("");
+    $('#token_sistema').prop('disabled', false);
+    $('#label-login').text("Token"); 
+    $('#sair').hide();
+  });
+
 });
 
 function login(redireciona){
@@ -39,6 +49,7 @@ function sucessoLogin(usuario){
   $('#token_sistema').val(usuario);
   $('#token_sistema').prop('disabled', true);
   $('#label-login').text("Logado como:"); 
+  $('#sair').show();
 }
 
 function validarPreenchimento(redireciona){
