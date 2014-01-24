@@ -38,7 +38,7 @@ function login(redireciona){
             if(data.sucesso == "true"){              
               sucessoLogin(data.usuario);                      
             }else{              
-              alert("Falha ao conectar ao Nomus PCP");
+              alert("Falha ao conectar ao Nomus PCP - "+ data.causa);
             }              
           }
   });

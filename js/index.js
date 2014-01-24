@@ -38,13 +38,19 @@ var buscaDados = {
         var url = localStorage.getItem("url_sistema") + "APIMobile.do?metodo=listarCentrosTrabalho&token="+ localStorage.getItem("token_sistema");
         
         $.ajax({ 
+          cache : false,    
           type: 'GET',
           url: url,
           dataType: 'jsonp', 
           jsonp: false,
           jsonpCallback: "resposta",
           success: function(data) {
-            buscaDados.preencherCentros(data);         
+            if(data.sucesso == "true"){
+                buscaDados.preencherCentros(data);    
+            }else{
+                alert(data.causa);
+            }
+            
           }
         });
     },
