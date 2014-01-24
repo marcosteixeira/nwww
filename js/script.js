@@ -29,7 +29,8 @@ function login(redireciona){
           jsonpCallback: "resposta",
           success: function(data) {
             if(data.sucesso == "true"){              
-              sucessoLogin(data.usuario);                       
+              sucessoLogin(data.usuario);   
+              alert("sucesso no ajax");                    
             }else{              
               alert("Falha ao conectar ao Nomus PCP");
             }              
@@ -39,6 +40,7 @@ function login(redireciona){
 
 function sucessoLogin(usuario){
   localStorage.setItem("usuario_sistema", usuario);
+  alert(usuario);
   $('#token_sistema').val(usuario);
   $('#token_sistema').prop('disabled', true);
   $('#label-login').text("Logado como:"); 
