@@ -41,6 +41,7 @@
         <script type="text/javascript" src="js/script.js"></script>
         <script type="text/javascript">
             app.initialize();
+            $.support.cors = true;
             $( document ).ready(function() {
               validarPreenchimento(true);
               buscaDados.centrosTrabalho();

@@ -5,11 +5,8 @@ $( document ).ready(function() {
 
 
 	$('#salvar_configuracao').click(function() {    
-    alert("Click");
   	localStorage.setItem("url_sistema", $('#url_sistema').val());
   	localStorage.setItem("token_sistema", $('#token_sistema').val());
-    alert("Item setado no banco: " + localStorage.getItem("url_sistema"));
-    alert("Antes do login");
     login(false);
 	});
 
@@ -19,9 +16,9 @@ function login(redireciona){
   validarPreenchimento(redireciona);
   var jsonUsuario = "{\"token\":\""+  localStorage.getItem("token_sistema") + "\"}";
   var url = localStorage.getItem("url_sistema") + "APIMobile.do?metodo=login&data="+ jsonUsuario;
-  alert(url);
 
   $.ajax({ 
+          cache : false,
           type: 'GET',
           url: url,
           dataType: 'jsonp', 
@@ -29,8 +26,7 @@ function login(redireciona){
           jsonpCallback: "resposta",
           success: function(data) {
             if(data.sucesso == "true"){              
-              sucessoLogin(data.usuario);   
-              alert("sucesso no ajax");                    
+              sucessoLogin(data.usuario);                      
             }else{              
               alert("Falha ao conectar ao Nomus PCP");
             }              
@@ -40,7 +36,6 @@ function login(redireciona){
 
 function sucessoLogin(usuario){
   localStorage.setItem("usuario_sistema", usuario);
-  alert(usuario);
   $('#token_sistema').val(usuario);
   $('#token_sistema').prop('disabled', true);
   $('#label-login').text("Logado como:"); 
