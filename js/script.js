@@ -8,6 +8,7 @@ $( document ).ready(function() {
     alert("Click");
   	localStorage.setItem("url_sistema", $('#url_sistema').val());
   	localStorage.setItem("token_sistema", $('#token_sistema').val());
+    alert("Item setado no banco: " + localStorage.getItem("url_sistema"));
     alert("Antes do login");
     login(false);
 	});
@@ -18,6 +19,7 @@ function login(redireciona){
   validarPreenchimento(redireciona);
   var jsonUsuario = "{\"token\":\""+  localStorage.getItem("token_sistema") + "\"}";
   var url = localStorage.getItem("url_sistema") + "APIMobile.do?metodo=login&data="+ jsonUsuario;
+  alert(url);
 
   $.ajax({ 
           type: 'GET',
