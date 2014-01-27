@@ -45,12 +45,7 @@ var buscaDados = {
           jsonp: false,
           jsonpCallback: "resposta",
           success: function(data) {
-            if(data.sucesso == "true"){
-                buscaDados.preencherCentros(data);    
-            }else{
-                alert(data.causa);
-            }
-            
+            buscaDados.preencherCentros(data);                
           }
         });
     },
@@ -58,11 +53,20 @@ var buscaDados = {
     preencherCentros: function(data){
         $('#centros_trabalho').append("<ul id='ul-centros-trabalho' class='nav nav-pills nav-stacked text-center'></ul>");
         $.each(data, function( index, value ) {
-            $('#ul-centros-trabalho').append("<li class='linha-centro-trabalho'>" +            
-              "<a href='#'>" +                    
+            $('#ul-centros-trabalho').append("<a href='javascript:acessarCentroTrabalho("+ 
+                value.id +
+                ")' id='link-"+ 
+                value.id +
+                "'>" +            
+               "<li class='linha-centro-trabalho'>" +                    
                 value.nome +
               "</a>" + 
               "</li>"); 
         });
     }
 };
+
+function acessarCentroTrabalho(idCentroTrabalho){
+    localStorage.setItem("idCentroTrabalho", idCentroTrabalho);
+    window.location.replace("centroTrabalho.html");
+}
